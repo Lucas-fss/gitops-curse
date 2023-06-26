@@ -1,6 +1,6 @@
-name: CDGitops
+name: CD Gitops
 
-on: 
+on:
   push:
     branches: [main]
 
@@ -12,33 +12,33 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Build and push image to Dockerhub
+    
+    - name: Build and push image to dockerhub
       uses: docker/build-push-action@v1.1.0
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ secrets.DOCKER_USERNAME }}/gitops-curse
-        tags: ${{ github.sha }}, latest
-
+        username: ${{secrets.DOCKER_USERNAME}}
+        password: ${{secrets.DOCKER_PASSWORD}}
+        repository: ${{secrets.DOCKER_USERNAME}}/gitops-curse
+        tags: ${{github.sha}}, latest
+    
     - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1
-      with: 
-        kustomize-version: "5.1.0"
-
-    - name: Update Kubernetes resources
+      with:
+        kustomize-servion: "5.1.0"
+    
+    - name: update Kubertes resources
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run: |
         cd k8s
-        kustomize edit set image flask-server==$DOCKER_USERNAME/gitops-curse:$GITHUB_SHA
-
+        kustomize edit set image flask-server==$DOCKER_USERNAME/gitops-curse:latest
+      
     - name: Commit
       run: |
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -am "Bump docker version"
-
+        git config --local user.name "Github Action"
+        git commit -am "Bumb docker version"
+    
     - name: Push
       uses: ad-m/github-push-action@master
       with:
