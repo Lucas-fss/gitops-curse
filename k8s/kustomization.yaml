@@ -9,3 +9,5 @@ images:
 - name: flask-server
   newName: lucasfss/gitops
   newTag: latest
+- name: flask-server==lucasfss/gitops-curse
+  newTag: latest
