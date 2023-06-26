@@ -9,8 +9,3 @@ images:
 - name: flask-server
   newName: lucasfss/gitops
   newTag: latest
-- name: flask-server==lucasfss/gitops-curse
-  newTag: latest
-- name: goserver
-  newName: lucasfss/gitops-curse
-  newTag: a1b5bc69bbcda12128f7dd3f83d88c826f70ba58
