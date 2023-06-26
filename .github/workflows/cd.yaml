@@ -43,4 +43,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.TOKEN_GITHUB }}
-        repository: Lucas-fss/gitops-curse
+        repository: /Lucas-fss/gitops-curse
