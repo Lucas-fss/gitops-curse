@@ -8,4 +8,4 @@ resources:
 images:
 - name: flask-server
   newName: lucasfss/gitops-curse
-  newTag: c5e78f891fafa0fc4913206052e2a31ff51dde74
+  newTag: ea354a2ddf1edaab8f27ab7ba43526feb68f27ff
